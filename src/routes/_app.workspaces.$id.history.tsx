@@ -62,8 +62,8 @@ function HistoryPage() {
             {rows.length === 0 ? (
               <tr><td colSpan={7} className="p-8 text-center text-muted-foreground">No queries match these filters.</td></tr>
             ) : rows.map(r => (
-              <>
-                <tr key={r.id} className="border-t border-border hover:bg-elevated/40 cursor-pointer" onClick={() => setExpanded(expanded === r.id ? null : r.id)}>
+              <Fragment key={r.id}>
+                <tr className="border-t border-border hover:bg-elevated/40 cursor-pointer" onClick={() => setExpanded(expanded === r.id ? null : r.id)}>
                   <td className="p-3 max-w-md truncate" title={r.text}>{r.text}</td>
                   <td className="p-3"><span className="rounded bg-elevated px-1.5 py-0.5 text-xs capitalize">{r.type}</span></td>
                   <td className="p-3 text-muted-foreground">{r.sources.length}</td>
@@ -84,7 +84,7 @@ function HistoryPage() {
                     </td>
                   </tr>
                 )}
-              </>
+              </Fragment>
             ))}
           </tbody>
         </table>
