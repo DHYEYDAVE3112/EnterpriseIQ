@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { createFileRoute, useParams } from "@tanstack/react-router";
 import { MOCK_QUERIES, type QueryType, type Confidence } from "@/lib/mock/data";
 import { ConfidenceBadge } from "@/components/shared/StatusBadge";
