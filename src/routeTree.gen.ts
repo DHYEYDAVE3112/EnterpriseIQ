@@ -17,7 +17,16 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppOnboardingRouteImport } from './routes/_app.onboarding'
 import { Route as AppDashboardRouteImport } from './routes/_app.dashboard'
 import { Route as AppWorkspacesIndexRouteImport } from './routes/_app.workspaces.index'
+import { Route as AppSettingsIndexRouteImport } from './routes/_app.settings.index'
 import { Route as AppWorkspacesIdRouteImport } from './routes/_app.workspaces.$id'
+import { Route as AppSettingsBillingRouteImport } from './routes/_app.settings.billing'
+import { Route as AppWorkspacesIdIndexRouteImport } from './routes/_app.workspaces.$id.index'
+import { Route as AppWorkspacesIdSourcesRouteImport } from './routes/_app.workspaces.$id.sources'
+import { Route as AppWorkspacesIdQueryRouteImport } from './routes/_app.workspaces.$id.query'
+import { Route as AppWorkspacesIdMindmapRouteImport } from './routes/_app.workspaces.$id.mindmap'
+import { Route as AppWorkspacesIdHistoryRouteImport } from './routes/_app.workspaces.$id.history'
+import { Route as AppWorkspacesIdGraphRouteImport } from './routes/_app.workspaces.$id.graph'
+import { Route as AppWorkspacesIdAnalyticsRouteImport } from './routes/_app.workspaces.$id.analytics'
 
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
@@ -58,11 +67,57 @@ const AppWorkspacesIndexRoute = AppWorkspacesIndexRouteImport.update({
   path: '/workspaces/',
   getParentRoute: () => AppRoute,
 } as any)
+const AppSettingsIndexRoute = AppSettingsIndexRouteImport.update({
+  id: '/settings/',
+  path: '/settings/',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppWorkspacesIdRoute = AppWorkspacesIdRouteImport.update({
   id: '/workspaces/$id',
   path: '/workspaces/$id',
   getParentRoute: () => AppRoute,
 } as any)
+const AppSettingsBillingRoute = AppSettingsBillingRouteImport.update({
+  id: '/settings/billing',
+  path: '/settings/billing',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppWorkspacesIdIndexRoute = AppWorkspacesIdIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppWorkspacesIdRoute,
+} as any)
+const AppWorkspacesIdSourcesRoute = AppWorkspacesIdSourcesRouteImport.update({
+  id: '/sources',
+  path: '/sources',
+  getParentRoute: () => AppWorkspacesIdRoute,
+} as any)
+const AppWorkspacesIdQueryRoute = AppWorkspacesIdQueryRouteImport.update({
+  id: '/query',
+  path: '/query',
+  getParentRoute: () => AppWorkspacesIdRoute,
+} as any)
+const AppWorkspacesIdMindmapRoute = AppWorkspacesIdMindmapRouteImport.update({
+  id: '/mindmap',
+  path: '/mindmap',
+  getParentRoute: () => AppWorkspacesIdRoute,
+} as any)
+const AppWorkspacesIdHistoryRoute = AppWorkspacesIdHistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => AppWorkspacesIdRoute,
+} as any)
+const AppWorkspacesIdGraphRoute = AppWorkspacesIdGraphRouteImport.update({
+  id: '/graph',
+  path: '/graph',
+  getParentRoute: () => AppWorkspacesIdRoute,
+} as any)
+const AppWorkspacesIdAnalyticsRoute =
+  AppWorkspacesIdAnalyticsRouteImport.update({
+    id: '/analytics',
+    path: '/analytics',
+    getParentRoute: () => AppWorkspacesIdRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -71,8 +126,17 @@ export interface FileRoutesByFullPath {
   '/register': typeof RegisterRoute
   '/dashboard': typeof AppDashboardRoute
   '/onboarding': typeof AppOnboardingRoute
-  '/workspaces/$id': typeof AppWorkspacesIdRoute
+  '/settings/billing': typeof AppSettingsBillingRoute
+  '/workspaces/$id': typeof AppWorkspacesIdRouteWithChildren
+  '/settings/': typeof AppSettingsIndexRoute
   '/workspaces/': typeof AppWorkspacesIndexRoute
+  '/workspaces/$id/analytics': typeof AppWorkspacesIdAnalyticsRoute
+  '/workspaces/$id/graph': typeof AppWorkspacesIdGraphRoute
+  '/workspaces/$id/history': typeof AppWorkspacesIdHistoryRoute
+  '/workspaces/$id/mindmap': typeof AppWorkspacesIdMindmapRoute
+  '/workspaces/$id/query': typeof AppWorkspacesIdQueryRoute
+  '/workspaces/$id/sources': typeof AppWorkspacesIdSourcesRoute
+  '/workspaces/$id/': typeof AppWorkspacesIdIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -81,8 +145,16 @@ export interface FileRoutesByTo {
   '/register': typeof RegisterRoute
   '/dashboard': typeof AppDashboardRoute
   '/onboarding': typeof AppOnboardingRoute
-  '/workspaces/$id': typeof AppWorkspacesIdRoute
+  '/settings/billing': typeof AppSettingsBillingRoute
+  '/settings': typeof AppSettingsIndexRoute
   '/workspaces': typeof AppWorkspacesIndexRoute
+  '/workspaces/$id/analytics': typeof AppWorkspacesIdAnalyticsRoute
+  '/workspaces/$id/graph': typeof AppWorkspacesIdGraphRoute
+  '/workspaces/$id/history': typeof AppWorkspacesIdHistoryRoute
+  '/workspaces/$id/mindmap': typeof AppWorkspacesIdMindmapRoute
+  '/workspaces/$id/query': typeof AppWorkspacesIdQueryRoute
+  '/workspaces/$id/sources': typeof AppWorkspacesIdSourcesRoute
+  '/workspaces/$id': typeof AppWorkspacesIdIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -93,8 +165,17 @@ export interface FileRoutesById {
   '/register': typeof RegisterRoute
   '/_app/dashboard': typeof AppDashboardRoute
   '/_app/onboarding': typeof AppOnboardingRoute
-  '/_app/workspaces/$id': typeof AppWorkspacesIdRoute
+  '/_app/settings/billing': typeof AppSettingsBillingRoute
+  '/_app/workspaces/$id': typeof AppWorkspacesIdRouteWithChildren
+  '/_app/settings/': typeof AppSettingsIndexRoute
   '/_app/workspaces/': typeof AppWorkspacesIndexRoute
+  '/_app/workspaces/$id/analytics': typeof AppWorkspacesIdAnalyticsRoute
+  '/_app/workspaces/$id/graph': typeof AppWorkspacesIdGraphRoute
+  '/_app/workspaces/$id/history': typeof AppWorkspacesIdHistoryRoute
+  '/_app/workspaces/$id/mindmap': typeof AppWorkspacesIdMindmapRoute
+  '/_app/workspaces/$id/query': typeof AppWorkspacesIdQueryRoute
+  '/_app/workspaces/$id/sources': typeof AppWorkspacesIdSourcesRoute
+  '/_app/workspaces/$id/': typeof AppWorkspacesIdIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -105,8 +186,17 @@ export interface FileRouteTypes {
     | '/register'
     | '/dashboard'
     | '/onboarding'
+    | '/settings/billing'
     | '/workspaces/$id'
+    | '/settings/'
     | '/workspaces/'
+    | '/workspaces/$id/analytics'
+    | '/workspaces/$id/graph'
+    | '/workspaces/$id/history'
+    | '/workspaces/$id/mindmap'
+    | '/workspaces/$id/query'
+    | '/workspaces/$id/sources'
+    | '/workspaces/$id/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -115,8 +205,16 @@ export interface FileRouteTypes {
     | '/register'
     | '/dashboard'
     | '/onboarding'
-    | '/workspaces/$id'
+    | '/settings/billing'
+    | '/settings'
     | '/workspaces'
+    | '/workspaces/$id/analytics'
+    | '/workspaces/$id/graph'
+    | '/workspaces/$id/history'
+    | '/workspaces/$id/mindmap'
+    | '/workspaces/$id/query'
+    | '/workspaces/$id/sources'
+    | '/workspaces/$id'
   id:
     | '__root__'
     | '/'
@@ -126,8 +224,17 @@ export interface FileRouteTypes {
     | '/register'
     | '/_app/dashboard'
     | '/_app/onboarding'
+    | '/_app/settings/billing'
     | '/_app/workspaces/$id'
+    | '/_app/settings/'
     | '/_app/workspaces/'
+    | '/_app/workspaces/$id/analytics'
+    | '/_app/workspaces/$id/graph'
+    | '/_app/workspaces/$id/history'
+    | '/_app/workspaces/$id/mindmap'
+    | '/_app/workspaces/$id/query'
+    | '/_app/workspaces/$id/sources'
+    | '/_app/workspaces/$id/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -196,6 +303,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppWorkspacesIndexRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/settings/': {
+      id: '/_app/settings/'
+      path: '/settings'
+      fullPath: '/settings/'
+      preLoaderRoute: typeof AppSettingsIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/workspaces/$id': {
       id: '/_app/workspaces/$id'
       path: '/workspaces/$id'
@@ -203,20 +317,104 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppWorkspacesIdRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/settings/billing': {
+      id: '/_app/settings/billing'
+      path: '/settings/billing'
+      fullPath: '/settings/billing'
+      preLoaderRoute: typeof AppSettingsBillingRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/workspaces/$id/': {
+      id: '/_app/workspaces/$id/'
+      path: '/'
+      fullPath: '/workspaces/$id/'
+      preLoaderRoute: typeof AppWorkspacesIdIndexRouteImport
+      parentRoute: typeof AppWorkspacesIdRoute
+    }
+    '/_app/workspaces/$id/sources': {
+      id: '/_app/workspaces/$id/sources'
+      path: '/sources'
+      fullPath: '/workspaces/$id/sources'
+      preLoaderRoute: typeof AppWorkspacesIdSourcesRouteImport
+      parentRoute: typeof AppWorkspacesIdRoute
+    }
+    '/_app/workspaces/$id/query': {
+      id: '/_app/workspaces/$id/query'
+      path: '/query'
+      fullPath: '/workspaces/$id/query'
+      preLoaderRoute: typeof AppWorkspacesIdQueryRouteImport
+      parentRoute: typeof AppWorkspacesIdRoute
+    }
+    '/_app/workspaces/$id/mindmap': {
+      id: '/_app/workspaces/$id/mindmap'
+      path: '/mindmap'
+      fullPath: '/workspaces/$id/mindmap'
+      preLoaderRoute: typeof AppWorkspacesIdMindmapRouteImport
+      parentRoute: typeof AppWorkspacesIdRoute
+    }
+    '/_app/workspaces/$id/history': {
+      id: '/_app/workspaces/$id/history'
+      path: '/history'
+      fullPath: '/workspaces/$id/history'
+      preLoaderRoute: typeof AppWorkspacesIdHistoryRouteImport
+      parentRoute: typeof AppWorkspacesIdRoute
+    }
+    '/_app/workspaces/$id/graph': {
+      id: '/_app/workspaces/$id/graph'
+      path: '/graph'
+      fullPath: '/workspaces/$id/graph'
+      preLoaderRoute: typeof AppWorkspacesIdGraphRouteImport
+      parentRoute: typeof AppWorkspacesIdRoute
+    }
+    '/_app/workspaces/$id/analytics': {
+      id: '/_app/workspaces/$id/analytics'
+      path: '/analytics'
+      fullPath: '/workspaces/$id/analytics'
+      preLoaderRoute: typeof AppWorkspacesIdAnalyticsRouteImport
+      parentRoute: typeof AppWorkspacesIdRoute
+    }
   }
 }
+
+interface AppWorkspacesIdRouteChildren {
+  AppWorkspacesIdAnalyticsRoute: typeof AppWorkspacesIdAnalyticsRoute
+  AppWorkspacesIdGraphRoute: typeof AppWorkspacesIdGraphRoute
+  AppWorkspacesIdHistoryRoute: typeof AppWorkspacesIdHistoryRoute
+  AppWorkspacesIdMindmapRoute: typeof AppWorkspacesIdMindmapRoute
+  AppWorkspacesIdQueryRoute: typeof AppWorkspacesIdQueryRoute
+  AppWorkspacesIdSourcesRoute: typeof AppWorkspacesIdSourcesRoute
+  AppWorkspacesIdIndexRoute: typeof AppWorkspacesIdIndexRoute
+}
+
+const AppWorkspacesIdRouteChildren: AppWorkspacesIdRouteChildren = {
+  AppWorkspacesIdAnalyticsRoute: AppWorkspacesIdAnalyticsRoute,
+  AppWorkspacesIdGraphRoute: AppWorkspacesIdGraphRoute,
+  AppWorkspacesIdHistoryRoute: AppWorkspacesIdHistoryRoute,
+  AppWorkspacesIdMindmapRoute: AppWorkspacesIdMindmapRoute,
+  AppWorkspacesIdQueryRoute: AppWorkspacesIdQueryRoute,
+  AppWorkspacesIdSourcesRoute: AppWorkspacesIdSourcesRoute,
+  AppWorkspacesIdIndexRoute: AppWorkspacesIdIndexRoute,
+}
+
+const AppWorkspacesIdRouteWithChildren = AppWorkspacesIdRoute._addFileChildren(
+  AppWorkspacesIdRouteChildren,
+)
 
 interface AppRouteChildren {
   AppDashboardRoute: typeof AppDashboardRoute
   AppOnboardingRoute: typeof AppOnboardingRoute
-  AppWorkspacesIdRoute: typeof AppWorkspacesIdRoute
+  AppSettingsBillingRoute: typeof AppSettingsBillingRoute
+  AppWorkspacesIdRoute: typeof AppWorkspacesIdRouteWithChildren
+  AppSettingsIndexRoute: typeof AppSettingsIndexRoute
   AppWorkspacesIndexRoute: typeof AppWorkspacesIndexRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
   AppDashboardRoute: AppDashboardRoute,
   AppOnboardingRoute: AppOnboardingRoute,
-  AppWorkspacesIdRoute: AppWorkspacesIdRoute,
+  AppSettingsBillingRoute: AppSettingsBillingRoute,
+  AppWorkspacesIdRoute: AppWorkspacesIdRouteWithChildren,
+  AppSettingsIndexRoute: AppSettingsIndexRoute,
   AppWorkspacesIndexRoute: AppWorkspacesIndexRoute,
 }
 
